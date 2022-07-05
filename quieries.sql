@@ -37,3 +37,26 @@ SELECT * FROM animals
 
 SELECT * FROM animals 
   WHERE weight_kg >= 10.4 AND weight_kg <= 17.3;
+
+/* Update animals by setting species to "unspecified" 
+** Then rollback*/
+BEGIN;
+  SAVEPOINT unspecified_species;
+  UPDATE animals SET species='unspecified';
+  SELECT * FROM animals;
+  ROLLBACK TO unspecified_species;
+  SELECT * FROM animals;
+COMMIT;
+
+/* Update "animals" table by setting the "species" column
+** to "digimon" for all animals that have a name ending
+** in "mon" */
+
+BEGIN;
+  UPDATE animals
+    SET species='digimon'
+    WHERE name LIKE '%mon';
+  UPDATE animals
+    SET species='pokemon'
+    WHERE species='';
+COMMIT;
