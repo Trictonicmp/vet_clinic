@@ -14,3 +14,7 @@ CREATE TABLE animals (
     weight_kg           decimal,
     PRIMARY KEY(id)
 );
+
+/* Adding species column to naimal table */
+ALTER TABLE animals 
+    ADD species VARCHAR(40);
