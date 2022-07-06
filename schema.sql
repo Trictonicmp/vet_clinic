@@ -18,3 +18,29 @@ CREATE TABLE animals (
 /* Adding species column to naimal table */
 ALTER TABLE animals 
     ADD species VARCHAR(40);
+
+/* Create table named owners */
+CREATE TABLE owners (
+  id        INT GENERATED ALWAYS AS IDENTITY,
+  full_name VARCHAR(100),
+  age       INT,
+  PRIMARY KEY (id)
+);
+
+/* Create table named species */
+CREATE TABLE species (
+  id    INT GENERATED ALWAYS AS IDENTITY,
+  name  VARCHAR(30),
+  PRIMARY KEY (id)
+);
+
+/* Modify animals table: remove "species", add fk "species_id" 
+** add fk owner_id*/
+ALTER TABLE animals
+  DROP COLUMN species,
+  ADD COLUMN species_id INT,
+  ADD COLUMN owner_id   INT,
+  ADD FOREIGN KEY (species_id) REFERENCES species(id),
+  ADD FOREIGN KEY (owner_id) REFERENCES owners(id);
+
+
