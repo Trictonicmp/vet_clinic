@@ -108,3 +108,14 @@ SELECT species, avg(escape_attempts)
   FROM animals
   WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-01-01'
   GROUP BY species;
+
+/* Modify inserted animals to include "species_id" if name
+** ends in "mon" to be "Digimon" id otherwide be "Pokemon" id */
+UPDATE animals
+  SET species_id = species.id
+  FROM species
+  WHERE species.name = 'Pokemon';
+UPDATE animals
+  SET species_id = species.id
+  FROM species
+  WHERE animals.name LIKE '%mon' AND species.name = 'Digimon';
