@@ -152,3 +152,11 @@ UPDATE animals
     animals.name = 'Boarmon'
   )
     AND owners.full_name = 'Dean Winchester';
+
+/* Add vets */
+INSERT INTO vets (name, age, date_of_graduation)
+VALUES
+('William Tatcher', 45, '200-04-23'),
+('Maisy Smith', 26, '2019-01-19'),
+('Stephanie Mendez', 64, '1981-05-04'),
+('Jack Harkness', 38, '2008-06-08');
