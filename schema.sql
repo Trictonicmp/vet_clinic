@@ -65,3 +65,5 @@ CREATE TABLE visits (
   vet_id    INT REFERENCES vets(id),
   PRIMARY KEY (animal_id, vet_id)
 );
+
+
